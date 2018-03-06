@@ -53,6 +53,8 @@ class Ficha(models.Model):
                 r.imc = r.peso / (r.estatura*r.estatura)
 
 
+
+
     hoja_count = fields.Integer(compute='_compute_hoja_count', string='Hoja Evolución')
     def _compute_hoja_count(self):
         self.hoja_count = self.env['seguridad.hoja_evolucion'].search_count([('name', '=', self.id)])
@@ -64,6 +66,7 @@ class Ficha(models.Model):
          "La ficha debe ser única por empleado y tipo"),
         ]
     habito_ids = fields.One2many('seguridad.habito', 'ficha_id')
+
 
 class Vacuna(models.Model):
     _name = 'seguridad.vacuna'
@@ -141,7 +144,6 @@ class FactoresBiologico(models.Model):
     _name = 'seguridad.factor_biologico'
     name = fields.Char(string="Biológico", required=True)
 
-
 class FactoresPsicosocial(models.Model):
     _name = 'seguridad.factor_psicologico'
     name = fields.Char(string="Psicológico", required=True)
@@ -191,5 +193,6 @@ class HojaEvolucion(models.Model):
     desde = fields.Date(string="Reposo Desde:")
     hasta = fields.Date(string="Hasta:")
     name = fields.Many2one('seguridad.ficha', string="Empleado")
+
 
 

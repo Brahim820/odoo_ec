@@ -151,6 +151,109 @@
 
                         </tbody>
 					</table>
+
+                        <h3>Revisión por Sistema</h3>
+                        <table class="table table-condensed">
+                                <thead>
+											<tr style="border-bottom:1px black;border-style: solid;">
+												<th>Órgano</th>
+												<th>Observación</th>
+											</tr>
+                                </thead>
+                        <tbody>
+
+                            <tr>
+                                <td><t t-foreach="doc.sistema_id" t-as="sis"><span t-field="sis.name"/></t></td>
+                                <td><span t-field="doc.observacion"/></td>
+                            </tr>
+
+
+                        </tbody>
+					</table>
+
+                        <h3>Examen Físico</h3>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td>Presión Arterial (mm.Hg.): </td>
+                                <td><span t-field="doc.presion"/></td>
+                                <td>Frecuencia Cardiaca: </td>
+                                <td><span t-field="doc.frecuencia"/></td>
+                                <td>Peso (kg): </td>
+                                <td><span t-field="doc.peso"/></td>
+                                <td>Estatura (mts): </td>
+                                <td><span t-field="doc.estatura"/></td>
+                            </tr>
+                            <tr>
+                                <td>IMC (kg/mts2):</td>
+                                <td><span t-field="doc.imc"/></td>
+                                <td>Lateralidad:</td>
+                                <td><span t-field="doc.lateralidad"/></td>
+                                <td>Perimetro Abdominal:</td>
+                                <td><span t-field="doc.perimetro"/></td>
+                            </tr>
+					    </table>
+                        <table class="table table-condensed">
+                                <thead>
+											<tr style="border-bottom:1px black;border-style: solid;">
+												<th>Órgano/Sistema</th>
+												<th>Normal/Anormal</th>
+                                                <th>Observaciones o Descripcion de Hallazgos</th>
+											</tr>
+                                </thead>
+                        <tbody>
+                        <t t-foreach="doc.organo_ids" t-as="org">
+                            <tr>
+                                <td><t t-foreach="org.organo_id" t-as="o"><span t-field="o.name"/></t></td>
+                                <td><span t-field="org.tipo"/></td>
+                                <td><span t-field="org.observacion"/></td>
+                            </tr>
+                        </t>
+
+                        </tbody>
+					</table>
+
+
+                        <table>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr><td></td></tr>
+                            <tr>
+                                <td style="text-align: center;">MÉDICO OCUPACIONAL</td>
+                                <td style="text-align: center;">PACIENTE</td>
+                            </tr>
+
+					    </table>
+
+
+                        <table class="table table-condensed">
+
+                            <tr>
+                                <td>Condiciones del Trabajador</td>
+                                <td  style="text-align: left;"><span t-field="doc.condicion"/></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Observaciones</td>
+                                <td><span t-field="doc.observacion_condicion"/></td>
+                            </tr>
+
+                        </table>
+
+                        <table class="table table-condensed">
+                            <tr>
+                                <td>Nota: El concepto de aptitud laboral definitivo para el trabajador debe ser dado por el médico ocupacional de la UASB</td>
+                            </tr>
+
+					    </table>
+
+
                     </div>
                 </t>
 
