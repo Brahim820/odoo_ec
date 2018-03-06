@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ip_ec_solicitud_material_ip_ec_solicitud_material,ip_ec_solicitud_material.ip_ec_solicitud_material,model_ip_ec_solicitud_material_ip_ec_solicitud_material,,1,0,0,0
