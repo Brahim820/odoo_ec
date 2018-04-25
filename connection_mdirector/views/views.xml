@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="connection_mdirector.list">
+      <field name="name">connection_mdirector list</field>
+      <field name="model">connection_mdirector.connection_mdirector</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="connection_mdirector.action_window">
+      <field name="name">connection_mdirector window</field>
+      <field name="res_model">connection_mdirector.connection_mdirector</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="connection_mdirector.action_server">
+      <field name="name">connection_mdirector server</field>
+      <field name="model_id" ref="model_connection_mdirector_connection_mdirector"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="connection_mdirector" id="connection_mdirector.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="connection_mdirector.menu_1" parent="connection_mdirector.menu_root"/>
+    <menuitem name="Menu 2" id="connection_mdirector.menu_2" parent="connection_mdirector.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="connection_mdirector.menu_1_list" parent="connection_mdirector.menu_1"
+              action="connection_mdirector.action_window"/>
+    <menuitem name="Server to list" id="connection_mdirector" parent="connection_mdirector.menu_2"
+              action="connection_mdirector.action_server"/>
+    -->
+  </data>
+</odoo>

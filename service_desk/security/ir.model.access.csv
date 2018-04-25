@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_service_desk_service_desk,service_desk.service_desk,model_service_desk_service_desk,,1,0,0,0
