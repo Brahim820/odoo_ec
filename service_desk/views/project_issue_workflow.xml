@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Contract Workflow Definition -->
+        <record id="wkf_project_issue" model="workflow">
+            <field name="name">project.workflow</field>
+            <field name="osv">project.issue</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <!-- Workflow Activities (Stages) -->
+        <record id="act_abierto" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">abierto</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'abierto'})</field>
+            <field name="flow_start">True</field>
+        </record>
+
+        <record id="act_asignado" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">asignado</field>
+            <field name="kind">function</field>
+            <field name="action">state_asignado()
+        </field>
+        </record>
+
+         <!-- Workflow Transitions -->
+        <record id="abierto2asignado" model="workflow.transition">
+            <field name="act_from" ref="act_abierto"/>
+            <field name="act_to" ref="act_asignado"/>
+            <field name="signal">signal_confirm</field>
+        </record>
+    </data>
+</openerp>

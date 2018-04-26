@@ -7,11 +7,21 @@
             <field name="model">project.issue</field>
             <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
             <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="group" string = "Grupo"/>
+                </xpath>
                 <xpath expr="//field[@name='tag_ids']" position="after">
                     <field name="subcategoria" string = "SubCategoría"  domain="[('categoria_id', '=', categoria)]"/>
                 </xpath>
                 <xpath expr="//field[@name='tag_ids']" position="after">
                     <field name="categoria" string = "Categoría"/>
+                </xpath>
+                <xpath expr="//field[@name='task_id']" position="after">
+                    <field name="area" string = "Área"/>
+                </xpath>
+                <xpath expr="//field[@name='task_id']" position="after">
+                    <field name="type" string = "Tipo de Contacto"/>
                 </xpath>
             </field>
         </record>
