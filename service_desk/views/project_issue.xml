@@ -17,14 +17,15 @@
                 <xpath expr="//field[@name='tag_ids']" position="after">
                     <field name="categoria" string = "Categoría"/>
                 </xpath>
-                <xpath expr="//field[@name='task_id']" position="after">
-                    <field name="gestion" string = "Gestión"/>
-                </xpath>
+
                 <xpath expr="//field[@name='task_id']" position="after">
                     <field name="area" string = "Área"/>
                 </xpath>
                 <xpath expr="//field[@name='task_id']" position="after">
                     <field name="type" string = "Tipo de Contacto"/>
+                </xpath>
+                <xpath expr="//field[@name='task_id']" position="after">
+                    <field name="tipo" string = "Gestión"/>
                 </xpath>
             </field>
         </record>

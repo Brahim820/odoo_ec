@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of BrowseInfo. See LICENSE file for full copyright and licensing details.
 
-from openerp import api, fields, models, _
+from odoo import api, fields, models, _
 
 class project_issue_uasb(models.Model):
     _inherit = 'project.issue'
@@ -11,25 +11,7 @@ class project_issue_uasb(models.Model):
     area = fields.Many2one(comodel_name="project.issue.area", string="Área", required=True, )
     group = fields.Many2one(comodel_name="project.issue.group", string="Grupo", required=True, )
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
-    gestion = fields.Many2one(comodel_name="project.issue.gestion", string="Gestión", required=True, )
-    #state = fields.Selection(
-    #    [
-    #        ('abierto', 'Abierto'),
-    #        ('asignado', 'Asignado'),
-    #        ('pendiente', 'Pendiente'),
-    #        ('escalado', 'Escalado'),
-    #        ('resuelto', 'Resuelto'),
-    #        ('cerrado', 'Cerrado')
-    #    ],
-    #    'State',
-    #    readonly=True,
-    #)
-
-    #@api.multi
-    #def state_asignado(self):
-    #    self.state = 'Asignado'
-
-
+    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", required=True, )
 
 class Categoria(models.Model):
     _name = 'project.issue.category'
@@ -53,6 +35,6 @@ class Subcategoria(models.Model):
      categoria_id = fields.Many2one('project.issue.category', string="Categoría")
 
 class Gestion(models.Model):
-    _name = 'project.issue.gestion'
-    name = fields.Char(string="Gestión")
+    _name = 'project.issue.tipo'
+    name = fields.Char(string="Tipo")
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
