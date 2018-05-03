@@ -1,0 +1,43 @@
+<odoo>
+  <data>
+ <template id="website_project_detail_ticket" name="Detail page" page="True">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <center><h3>Mis Tickets</h3></center>
+
+              <table class="table-striped table">
+                 <thead>
+                  <tr>
+                  <th>#Ticket:</th>
+                  <th>Incidente:</th>
+                  <th>Asignado a:</th>
+                  <th>Fecha Creación:</th>
+                  <th>Estado:</th>
+                </tr>
+                  </thead>
+                  <tbody>
+                <t t-foreach="issue" t-as="issue">
+
+                <tr>
+                  <td><span t-esc="issue.sequence_name"/></td>
+                  <td><span t-esc="issue.name"/></td>
+                    <t t-foreach="issue.user_id" t-as="user">
+                        <td><span t-esc="user.name"/></td>
+                    </t>
+                  <td><span t-esc="issue.create_date"/></td>
+                    <t t-foreach="issue.stage_id" t-as="stage">
+                        <td><span t-esc="stage.name"/></td>
+                    </t>
+                </tr>
+
+                </t>
+                  </tbody>
+              </table>
+
+          </div>
+        </div>
+      </t>
+ </template>
+  </data>
+</odoo>

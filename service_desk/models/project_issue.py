@@ -11,6 +11,7 @@ class project_issue_uasb(models.Model):
     area = fields.Many2one(comodel_name="project.issue.area", string="Área", required=True, )
     group = fields.Many2one(comodel_name="project.issue.group", string="Grupo", required=True, )
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
+    gestion = fields.Many2one(comodel_name="project.issue.gestion", string="Gestión", required=True, )
     #state = fields.Selection(
     #    [
     #        ('abierto', 'Abierto'),
@@ -32,6 +33,10 @@ class project_issue_uasb(models.Model):
 class Categoria(models.Model):
     _name = 'project.issue.category'
     name = fields.Char(string="Categoría")
+
+class Gestion(models.Model):
+    _name = 'project.issue.gestion'
+    name = fields.Char(string="Gestión")
 
 class Area(models.Model):
     _name = 'project.issue.area'

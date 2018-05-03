@@ -1,0 +1,29 @@
+<odoo>
+  <data>
+    <template id="website_project_issue" name="Example page" page="True">
+      <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container">
+            <center><h3>Mesa de Ayuda - Universidad Andina Simón Bolívar</h3></center>
+            <p>
+                Universidad Andina Simón Bolívar sede Ecuador pone a su disposición el portal a través del cual integra el portafolio de servicios especializados informaticos, incluyendo:
+                <li>Soporte especializado y certificado</li>
+                <li>Peticiones de servicio</li>
+                <li>Soporte remoto</li>
+                <li>Seguimiento de tickets</li>
+                <li>Consultas e inquietudes comunes</li>
+                <li>Base de conocimientos</li>
+                <p>Si no dispone de un usuario puede contactarse con nosotros llamando al 8427.</p>
+
+              <br/>
+                <br/>
+              <a t-attf-href="/create_issue/ticket/submit" class="btn btn-info">Crear un nuevo Ticket</a>
+              <a t-attf-href="/create_issue/ticket" class="btn btn-info">Mis Tickets</a>
+            </p>
+
+          </div>
+        </div>
+      </t>
+    </template>
+    </data>
+  </odoo>
