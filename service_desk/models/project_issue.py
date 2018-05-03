@@ -30,13 +30,10 @@ class project_issue_uasb(models.Model):
     #    self.state = 'Asignado'
 
 
+
 class Categoria(models.Model):
     _name = 'project.issue.category'
     name = fields.Char(string="Categoría")
-
-class Gestion(models.Model):
-    _name = 'project.issue.gestion'
-    name = fields.Char(string="Gestión")
 
 class Area(models.Model):
     _name = 'project.issue.area'
@@ -55,5 +52,7 @@ class Subcategoria(models.Model):
      name = fields.Char(string="SubCategoría")
      categoria_id = fields.Many2one('project.issue.category', string="Categoría")
 
-
+class Gestion(models.Model):
+    _name = 'project.issue.gestion'
+    name = fields.Char(string="Gestión")
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
