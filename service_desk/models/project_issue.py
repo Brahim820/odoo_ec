@@ -35,6 +35,6 @@ class Subcategoria(models.Model):
      categoria_id = fields.Many2one('project.issue.category', string="Categoría")
 
 class Gestion(models.Model):
-    _name = 'project.issue.tipo'
-    name = fields.Char(string="Tipo")
+     _name = 'project.issue.tipo'
+     name = fields.Char(string="Tipo")
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
