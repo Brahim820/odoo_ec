@@ -11,7 +11,7 @@ class project_issue_uasb(models.Model):
     area = fields.Many2one(comodel_name="project.issue.area", string="Área", required=True, )
     group = fields.Many2one(comodel_name="project.issue.group", string="Grupo", required=True, )
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
-    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", required=True, )
+    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", )
 
 class Categoria(models.Model):
     _name = 'project.issue.category'

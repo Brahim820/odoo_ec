@@ -6,6 +6,7 @@ from odoo.http import request
 
 
 class Example(http.Controller):
+
     @http.route('/create_issue', type='http', auth='user', website=True)
     def render_example_page(self):
         return http.request.render('service_desk.website_project_issue', {})
@@ -18,7 +19,7 @@ class Example(http.Controller):
             # pass company details to the webpage in a variable
             'issue': issue})
 
-    @http.route('/create_issue/ticket/submit', type="http", auth="public", website=True)
+    @http.route('/create_issue/ticket/submit', type="http", auth="user", website=True)
     def support_submit_ticket(self, **kw):
         """Let's public and registered user submit a support ticket"""
         person_name = ""
@@ -45,7 +46,7 @@ class Example(http.Controller):
             'setting_max_ticket_attachments': setting_max_ticket_attachments,
             'setting_max_ticket_attachment_filesize': setting_max_ticket_attachment_filesize})
 
-    @http.route('/create_issue/ticket/process', type="http", auth="public", website=True, csrf=True)
+    @http.route('/create_issue/ticket/process', type="http", auth="user", website=True, csrf=True)
     def support_process_ticket(self, **kwargs):
         """Adds the support ticket to the database and sends out emails to everyone following the support ticket category"""
         values = {}
@@ -65,7 +66,7 @@ class Example(http.Controller):
             new_ticket_id = request.env['project.issue'].sudo().create(
                 {'categoria': values['category'],
                  'email_from': values['email'], 'description': values['description'], 'name': values['subject'],
-                 'partner_id': http.request.env.user.partner_id.id,
+                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,
                  })
 
        # if http.request.env.user.name != "Public user":
@@ -102,7 +103,12 @@ class Example(http.Controller):
                         'res_id': new_ticket_id.id
                     })
 
-        return werkzeug.utils.redirect("/support/ticket/thanks")
+        return werkzeug.utils.redirect("/create_issue/ticket/thanks")
+
+    @http.route('/create_issue/ticket/thanks', type="http", auth="public", website=True)
+    def support_ticket_thanks(self, **kw):
+        """Displays a thank you page after the user submits a ticket"""
+        return http.request.render('service_desk.issue_thank_you', {})
 
 
 
