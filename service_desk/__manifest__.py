@@ -28,6 +28,7 @@
         'views/website_project_issue.xml',
         'views/website_project_detail_ticket.xml',
         'views/website_project_create_ticket.xml',
+        'views/project_user.xml',
 
     ],
 }

@@ -142,9 +142,9 @@ class Example(http.Controller):
         if http.request.env.user.name != "Public user":
             portal_access_key = randint(1000000000, 2000000000)
             new_ticket_id = request.env['project.issue'].sudo().create(
-                {'categoria': values['category'],
+                {'supercategoria': values['category'],'tipo': values['tipo'],
                  'email_from': values['email'], 'description': values['description'], 'name': values['subject'],
-                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,
+                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,'user_id':'','type':2,
                  })
 
        # if http.request.env.user.name != "Public user":
