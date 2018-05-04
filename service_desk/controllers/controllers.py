@@ -1,11 +1,88 @@
 # -*- coding: utf-8 -*-
 import werkzeug
+import json
+import base64
 from random import randint
 from odoo import http
 from odoo.http import request
+from openerp.addons.website.models.website import slug
 
 
 class Example(http.Controller):
+
+    #@http.route('/create_issue/subcategories/field/fetch', type='http', auth="public", website=True)
+    #def support_subcategories_field_fetch(self, **kwargs):
+
+     #   values = {}
+
+     #   for field_name, field_value in kwargs.items():
+     #       values[field_name] = field_value
+
+     #   if values['subcategory'] != 'undefined':
+     #       category_fields = request.env['service_desk.project_issue_category'].sudo().search(
+     #           [('supercategoria_id', '=', int(values['category']))])
+     #  else:
+     #       return ""
+
+        # Only return a dropdown if this category has subcategories
+      #  return_string = ""
+
+       # if category_fields:
+       #     for category_field in category_fields:
+
+       #         return_string += "<div class=\"form-group\">\n"
+       #         return_string += "  <label class=\"col-md-3 col-sm-4 control-label\" for=\"efield_" + str(
+       #             category_field.id) + "\">" + category_field.name + "</label>\n"
+       #         return_string += "  <div class=\"col-md-7 col-sm-8\">\n"
+
+        #        if category_field.type == "textbox":
+        #            return_string += "    <input type=\"text\" required=\"True\" class=\"form-control\" name=\"efield_" + str(
+        #                category_field.id) + "\">\n"
+        #        elif category_field.type == "polar":
+        #            return_string += "    <label class=\"radio-inline\">\n"
+        #            return_string += "      <input type=\"radio\" value=\"Yes\" name=\"efield_" + str(
+        #                category_field.id) + "\">Yes\n"
+        #            return_string += "    </label>\n"
+        #            return_string += "    <label class=\"radio-inline\">\n"
+        #            return_string += "      <input type=\"radio\" value=\"No\" name=\"efield_" + str(
+        #                category_field.id) + "\">No\n"
+        #            return_string += "    </label>\n"
+
+         #       return_string += "  </div>\n"
+         #       return_string += "</div>\n"
+
+        #return return_string
+
+    #@http.route('/create_issue/subcategories/fetch', type='http', auth="public", website=True)
+    #def support_subcategories_fetch(self, **kwargs):
+
+     #   values = {}
+
+     #   for field_name, field_value in kwargs.items():
+     #       values[field_name] = field_value
+
+     #   sub_categories = request.env['project.issue.supercategory'].sudo().search(
+     #       [('tipo_id', '=', int(values['category']))])
+
+        # Only return a dropdown if this category has subcategories
+        #return_string = ""
+
+        #   if sub_categories:
+        #    return_string += "<div class=\"form-group\">\n"
+        #    return_string += "    <label class=\"col-md-3 col-sm-4 control-label\" for=\"subcategory\">Categoría</label>\n"
+        #   return_string += "    <div class=\"col-md-7 col-sm-8\">\n"
+
+        #    return_string += "        <select class=\"form-control\" id=\"subcategory\" name=\"subcategory\">\n"
+        #    for sub_category in request.env['project.issue.supercategory'].sudo().search(
+        #            [('tipo_id', '=', int(values['category']))]):
+        #        return_string += "            <option value=\"" + str(
+        #            sub_category.id) + "\">" + sub_category.name.encode("utf-8") + "</option>\n"
+
+        #   return_string += "        </select>\n"
+        #return_string += "    </div>\n"
+        #return_string += "</div>\n"
+
+        #return return_string
 
     @http.route('/create_issue', type='http', auth='user', website=True)
     def render_example_page(self):
@@ -41,7 +118,8 @@ class Example(http.Controller):
             setting_max_ticket_attachment_filesize = 500
 
         return http.request.render('service_desk.website_project_create_ticket', {
-            'categories': http.request.env['project.issue.category'].sudo().search([]),
+            'tipos': http.request.env['project.issue.tipo'].sudo().search([]),
+            'categories': http.request.env['project.issue.supercategory'].sudo().search([]),
             'person_name': person_name, 'email': http.request.env.user.email,
             'setting_max_ticket_attachments': setting_max_ticket_attachments,
             'setting_max_ticket_attachment_filesize': setting_max_ticket_attachment_filesize})

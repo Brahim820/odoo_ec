@@ -38,12 +38,12 @@
                        update_sub_categories()
 
 
-                       $("#category").change(function() {
+                       $("#tipo").change(function() {
                             update_sub_categories()
                        });
 
                        function update_sub_categories() {
-                           $.ajax({url: "/support/subcategories/fetch?category=" + $("#category").val(), success: function(result){
+                           $.ajax({url: "/create_issue/subcategories/fetch?category=" + $("#tipo").val(), success: function(result){
                                $("#subcategoy_container").html(result);
                                update_sub_category_fields();
                            }});
@@ -54,7 +54,7 @@
                        });
 
                        function update_sub_category_fields() {
-                           $.ajax({url: "/support/subcategories/field/fetch?subcategory=" + $("#subcategory").val(), success: function(result){
+                           $.ajax({url: "/create_issue/subcategories/field/fetch?subcategory=" + $("#subcategory").val(), success: function(result){
                                $("#subcategoy_fields").html(result);
                            }});
                        }
@@ -75,11 +75,17 @@
 
                     });
 
-
-
-
                     </script>
-
+                    <div t-attf-class="form-group #{error and 'tipo' in error and 'has-error' or ''}">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Tipo</label>
+                        <div class="col-md-7 col-sm-8">
+                            <select class="form-control" id="tipo" name="tipo">
+                                <t t-foreach="tipos" t-as="tipo">
+                            <option t-attf-value="#{tipo.id}"><t t-esc="tipo.name"/></option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
                     <div t-attf-class="form-group #{error and 'category' in error and 'has-error' or ''}">
                         <label class="col-md-3 col-sm-4 control-label" for="name">Categoría</label>
                         <div class="col-md-7 col-sm-8">
@@ -90,12 +96,12 @@
                             </select>
                         </div>
                     </div>
-                    <div id="subcategoy_container">
+                    <!--<div id="subcategoy_container">
 
                     </div>
                     <div id="subcategoy_fields">
 
-                    </div>
+                    </div>-->
                     <div name="subject_container" t-attf-class="form-group #{error and 'subject' in error and 'has-error' or ''}">
                     <label class="col-md-3 col-sm-4 control-label" for="subject">Asunto</label>
                     <div class="col-md-7 col-sm-8">
