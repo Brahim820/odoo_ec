@@ -6,14 +6,14 @@ from odoo import api, fields, models, _
 class project_issue_uasb(models.Model):
     _inherit = 'project.issue'
 
-    supercategoria = fields.Many2one(comodel_name="project.issue.supercategory", string="Categoría Usuario", required=True, )
+    supercategoria = fields.Many2one(comodel_name="project.issue.supercategory", string="Categoría Usuario",  )
     categoria = fields.Many2one(comodel_name="project.issue.category", string="Categoría", required=True, )
     subcategoria = fields.Many2one(comodel_name="project.issue.subcategory", string="SubCategoría", required=True, )
     area = fields.Many2one(comodel_name="project.issue.area", string="Área", required=True, )
     group = fields.Char(string="Puesto de Trabajo:", related='user_id.group.name', readonly=True, store=True, )
 
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
-    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", )
+    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", help="Incidente = Interrupción del servicio, Requerimiento = " )
 
 class SuperCategoria(models.Model):
     _name = 'project.issue.supercategory'

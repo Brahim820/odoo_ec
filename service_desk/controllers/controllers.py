@@ -119,7 +119,7 @@ class Example(http.Controller):
 
         return http.request.render('service_desk.website_project_create_ticket', {
             'tipos': http.request.env['project.issue.tipo'].sudo().search([]),
-            'categories': http.request.env['project.issue.supercategory'].sudo().search([]),
+            'categories': http.request.env['project.issue.supercategory'].sudo().search([], order='name'),
             'person_name': person_name, 'email': http.request.env.user.email,
             'setting_max_ticket_attachments': setting_max_ticket_attachments,
             'setting_max_ticket_attachment_filesize': setting_max_ticket_attachment_filesize})
