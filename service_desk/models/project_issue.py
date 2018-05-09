@@ -15,6 +15,8 @@ class project_issue_uasb(models.Model):
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
     tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", help="Incidente = Interrupción del servicio, Requerimiento = " )
 
+
+
 class SuperCategoria(models.Model):
     _name = 'project.issue.supercategory'
     name = fields.Char(string="Categoría Usuario")

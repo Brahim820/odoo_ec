@@ -14,17 +14,19 @@
             <field name="wkf_id" ref="wkf_project_issue"/>
             <field name="name">abierto</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': 'abierto'})</field>
+            <field name="action">write({'stage_id.name': 'Abierto'})</field>
             <field name="flow_start">True</field>
         </record>
 
-        <record id="act_asignado" model="workflow.activity">
+        <record id="act_cerrado" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">asignado</field>
+            <field name="name">Cerrado</field>
             <field name="kind">function</field>
-            <field name="action">state_asignado()
-        </field>
+            <field name="action">write({'stage_id.name': 'Cerrado'})</field>
+            <field name="flow_stop">True</field>
         </record>
+
+
 
          <!-- Workflow Transitions -->
         <record id="abierto2asignado" model="workflow.transition">

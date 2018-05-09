@@ -34,6 +34,9 @@
                 </t>
                   </tbody>
               </table>
+               <div t-if="pager" class="o_portal_pager text-center">
+              <t t-call="website.pager"/>
+            </div>
 
           </div>
         </div>
