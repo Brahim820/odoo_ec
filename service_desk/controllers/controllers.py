@@ -144,7 +144,7 @@ class Example(http.Controller):
             new_ticket_id = request.env['project.issue'].sudo().create(
                 {'supercategoria': values['category'],'tipo': values['tipo'],
                  'email_from': values['email'], 'description': values['description'], 'name': values['subject'],
-                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,'user_id':'','type':2,
+                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,'user_id':'','type':3,
                  })
 
        # if http.request.env.user.name != "Public user":

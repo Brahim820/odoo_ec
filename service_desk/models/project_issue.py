@@ -13,9 +13,38 @@ class project_issue_uasb(models.Model):
     group = fields.Char(string="Puesto de Trabajo:", related='user_id.group.name', readonly=True, store=True, )
 
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
-    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo", help="Incidente = Interrupción del servicio, Requerimiento = " )
+    tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo",  required=True,)
+    state = fields.Selection(
+        [
+            ('1abierto', 'Abierto'),
+            ('2pendiente', 'Pendiente'),
+            ('3escalado', 'Escalado'),
+            ('4resuelto', 'Resuelto'),
+            ('5cerrado', 'Cerrado')
+        ],
+        'Estado',
+        readonly=True,
+    )
 
+    @api.multi
+    def signal_pendiente(self):
+        self.write({'state': '2pendiente'})
+        return True
 
+    @api.multi
+    def signal_escalar(self):
+        self.write({'state': '3escalado'})
+        return True
+
+    @api.multi
+    def signal_resuelto(self):
+        self.write({'state': '4resuelto'})
+        return True
+
+    @api.multi
+    def signal_cerrado(self):
+        self.write({'state': '5cerrado'})
+        return True
 
 class SuperCategoria(models.Model):
     _name = 'project.issue.supercategory'
