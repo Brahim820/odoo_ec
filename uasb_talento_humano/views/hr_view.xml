@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+      <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.info.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Discapacidad">
+                        <group>
+                            <field name="discapacidad"/>
+                            <field name="porcentaje_discapacidad"/>
+                            <field name="carnet_discapacidad"/>
+                        </group>
+                    </page>
+                    <page string="Formación">
+                        <group>
+                            <field name="formacion_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="nivel"/>
+                                        <field name="institucion"/>
+                                        <field name="titulo"/>
+                                        <field name="registro"/>
+                                    </tree>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Capacitación">
+                        <group>
+                            <field name="capacitacion_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="institucioncap"/>
+                                        <field name="evento"/>
+                                        <field name="area"/>
+                                        <field name="tipo"/>
+                                        <field name="fecha_desde"/>
+                                        <field name="fecha_hasta"/>
+                                        <field name="dias"/>
+                                        <field name="horas"/>
+                                    </tree>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Experiencia">
+                        <group>
+                            <field name="experiencia_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="institucion"/>
+                                        <field name="puesto"/>
+                                        <field name="areatrabajo"/>
+                                        <field name="fecha_desde"/>
+                                        <field name="fecha_hasta"/>
+                                        <field name="actividad_ids" widget="many2many_tags">
+                                        </field>
+                                    </tree>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Logros">
+                        <group>
+                            <field name="logro_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="tipologro"/>
+                                    </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+       </record>
+  </data>
+</openerp>

@@ -26,9 +26,7 @@
                         <td><span t-esc="user.name"/></td>
                     </t>
                   <td><span t-esc="issue.create_date"/></td>
-                    <t t-foreach="issue.stage_id" t-as="stage">
-                        <td><span t-esc="stage.name"/></td>
-                    </t>
+                  <td><span t-esc="issue.state"/></td>
                 </tr>
 
                 </t>
