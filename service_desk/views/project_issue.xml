@@ -33,7 +33,7 @@
                 <xpath expr="//field[@name='stage_id']" position="after">
 
                     <button name="signal_pendiente" type="object" string="Asignar"
-                                    states="1abierto" class="oe_highlight" groups ="project.group_project_manager"/>
+                                    states="abierto" class="oe_highlight" groups ="project.group_project_manager"/>
                     <button name="signal_resuelto" type="object" string="Resolver"
                                     states="2pendiente,3escalado" class="oe_highlight"/>
                     <button name="signal_escalar" type="object" string="Escalar"

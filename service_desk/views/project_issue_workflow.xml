@@ -12,36 +12,36 @@
         <!-- Workflow Activities (Stages) -->
         <record id="act_abierto" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">1abierto</field>
+            <field name="name">abierto</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': '1abierto'})</field>
+            <field name="action">write({'state': 'abierto'})</field>
             <field name="flow_start">True</field>
         </record>
 
         <record id="act_pendiente" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">2pendiente</field>
+            <field name="name">pendiente</field>
             <field name="kind">function</field>
             <field name="action">write({'state': '2pendiente'})</field>
         </record>
 
         <record id="act_escalar" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">3escalado</field>
+            <field name="name">escalado</field>
             <field name="kind">function</field>
             <field name="action">write({'state': '3escalado'})</field>
         </record>
 
         <record id="act_resuelto" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">4resuelto</field>
+            <field name="name">resuelto</field>
             <field name="kind">function</field>
             <field name="action">write({'state': '4resuelto'})</field>
         </record>
 
         <record id="act_cerrado" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">5cerrado</field>
+            <field name="name">cerrado</field>
             <field name="kind">function</field>
             <field name="action">write({'state': '5cerrado'})</field>
             <field name="flow_stop">True</field>

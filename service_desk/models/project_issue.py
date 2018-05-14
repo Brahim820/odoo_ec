@@ -16,7 +16,7 @@ class project_issue_uasb(models.Model):
     tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo",  required=True,)
     state = fields.Selection(
         [
-            ('1abierto', 'Abierto'),
+            ('abierto', 'Abierto'),
             ('2pendiente', 'Pendiente'),
             ('3escalado', 'Escalado'),
             ('4resuelto', 'Resuelto'),
