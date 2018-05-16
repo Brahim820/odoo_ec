@@ -120,7 +120,8 @@ class Example(http.Controller):
         return http.request.render('service_desk.website_project_create_ticket', {
             'tipos': http.request.env['project.issue.tipo'].sudo().search([]),
             'categories': http.request.env['project.issue.supercategory'].sudo().search([], order='name'),
-            'person_name': person_name, 'email': http.request.env.user.email,
+            'person_name': person_name,
+            'email': http.request.env.user.email,
             'setting_max_ticket_attachments': setting_max_ticket_attachments,
             'setting_max_ticket_attachment_filesize': setting_max_ticket_attachment_filesize})
 
@@ -142,10 +143,16 @@ class Example(http.Controller):
         if http.request.env.user.name != "Public user":
             portal_access_key = randint(1000000000, 2000000000)
             new_ticket_id = request.env['project.issue'].sudo().create(
-                {'supercategoria': values['category'],'tipo': values['tipo'],
-                 'email_from': values
-                 ['email'], 'description': values['description'], 'name': values['subject'],
-                 'partner_id': http.request.env.user.partner_id.id, 'project_id':2,'user_id':'','type':3,'state':'abierto',
+                {'supercategoria': values['category'],
+                 'tipo': values['tipo'],
+                 'email_from': values['email'],
+                 'description': values['description'],
+                 'name': values['subject'],
+                 'partner_id': http.request.env.user.partner_id.id,
+                 'project_id':2,
+                 'user_id':'',
+                 'type':3,
+                 'state':'Abierto',
                  })
 
        # if http.request.env.user.name != "Public user":

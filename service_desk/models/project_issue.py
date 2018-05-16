@@ -11,16 +11,15 @@ class project_issue_uasb(models.Model):
     subcategoria = fields.Many2one(comodel_name="project.issue.subcategory", string="SubCategoría", required=True, )
     area = fields.Many2one(comodel_name="project.issue.area", string="Área", required=True, )
     group = fields.Char(string="Puesto de Trabajo:", related='user_id.group.name', readonly=True, store=True, )
-
     type = fields.Many2one(comodel_name="project.issue.type", string="Tipo Contacto", required=True, )
     tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo",  required=True,)
     state = fields.Selection(
         [
-            ('abierto', 'Abierto'),
-            ('2pendiente', 'Pendiente'),
-            ('3escalado', 'Escalado'),
-            ('4resuelto', 'Resuelto'),
-            ('5cerrado', 'Cerrado')
+            ('Abierto', 'Abierto'),
+            ('Pendiente', 'Pendiente'),
+            ('Escalado', 'Escalado'),
+            ('Resuelto', 'Resuelto'),
+            ('Cerrado', 'Cerrado')
         ],
         'Estado',
         readonly=True,
@@ -28,22 +27,22 @@ class project_issue_uasb(models.Model):
 
     @api.multi
     def signal_pendiente(self):
-        self.write({'state': '2pendiente'})
+        self.write({'state': 'Pendiente'})
         return True
 
     @api.multi
     def signal_escalar(self):
-        self.write({'state': '3escalado'})
+        self.write({'state': 'Escalado'})
         return True
 
     @api.multi
     def signal_resuelto(self):
-        self.write({'state': '4resuelto'})
+        self.write({'state': 'Resuelto'})
         return True
 
     @api.multi
     def signal_cerrado(self):
-        self.write({'state': '5cerrado'})
+        self.write({'state': 'Cerrado'})
         return True
 
 class SuperCategoria(models.Model):

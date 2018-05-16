@@ -9,7 +9,7 @@
         Mesa de servicios adaptado para la Universidad Andina Simón Bolívar
     """,
 
-    'author': "UASB-EC",
+    'author': "Carlos Díaz",
     'website': "http://www.uasb.edu.ec",
 
     # Categories can be used to filter modules in modules listing

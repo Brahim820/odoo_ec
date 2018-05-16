@@ -12,38 +12,38 @@
         <!-- Workflow Activities (Stages) -->
         <record id="act_abierto" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">abierto</field>
+            <field name="name">Abierto</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': 'abierto'})</field>
+            <field name="action">write({'state': 'Abierto'})</field>
             <field name="flow_start">True</field>
         </record>
 
         <record id="act_pendiente" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">pendiente</field>
+            <field name="name">Pendiente</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': '2pendiente'})</field>
+            <field name="action">write({'state': 'Pendiente'})</field>
         </record>
 
         <record id="act_escalar" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
             <field name="name">escalado</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': '3escalado'})</field>
+            <field name="action">write({'state': 'Escalado'})</field>
         </record>
 
         <record id="act_resuelto" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">resuelto</field>
+            <field name="name">Resuelto</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': '4resuelto'})</field>
+            <field name="action">write({'state': 'Resuelto'})</field>
         </record>
 
         <record id="act_cerrado" model="workflow.activity">
             <field name="wkf_id" ref="wkf_project_issue"/>
-            <field name="name">cerrado</field>
+            <field name="name">Cerrado</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': '5cerrado'})</field>
+            <field name="action">write({'state': 'Cerrado'})</field>
             <field name="flow_stop">True</field>
         </record>
 
