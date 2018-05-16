@@ -152,7 +152,7 @@ class Example(http.Controller):
                  'project_id':2,
                  'user_id':'',
                  'type':3,
-                 'state':'Abierto',
+                 'state':'1.Abierto',
                  })
 
        # if http.request.env.user.name != "Public user":

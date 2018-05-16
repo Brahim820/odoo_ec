@@ -33,13 +33,13 @@
                 <xpath expr="//field[@name='stage_id']" position="after">
 
                     <button name="signal_pendiente" type="object" string="Asignar"
-                                    states="Abierto" class="oe_highlight" groups ="project.group_project_manager"/>
+                                    states="1.Abierto" class="oe_highlight" groups ="project.group_project_manager"/>
                     <button name="signal_resuelto" type="object" string="Resolver"
-                                    states="Pendiente,Escalado" class="oe_highlight"/>
+                                    states="2.Pendiente,3.Escalado" class="oe_highlight"/>
                     <button name="signal_escalar" type="object" string="Escalar"
-                                    states="Pendiente" class="oe_highlight"/>
+                                    states="2.Pendiente" class="oe_highlight"/>
                     <button name="signal_cerrado" type="object" string="Cerrar" confirm="Seguro de Cerrar el caso ?"
-                                    states="Resuelto" class="oe_highlight"/>
+                                    states="4.Resuelto" class="oe_highlight"/>
                     <field name="state" widget="statusbar"/>
                 </xpath>
 

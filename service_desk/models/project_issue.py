@@ -15,11 +15,11 @@ class project_issue_uasb(models.Model):
     tipo = fields.Many2one(comodel_name="project.issue.tipo", string="Tipo",  required=True,)
     state = fields.Selection(
         [
-            ('Abierto', 'Abierto'),
-            ('Pendiente', 'Pendiente'),
-            ('Escalado', 'Escalado'),
-            ('Resuelto', 'Resuelto'),
-            ('Cerrado', 'Cerrado')
+            ('1.Abierto', '1.Abierto'),
+            ('2.Pendiente', '2.Pendiente'),
+            ('3.Escalado', '3.Escalado'),
+            ('4.Resuelto', '4.Resuelto'),
+            ('5.Cerrado', '5.Cerrado')
         ],
         'Estado',
         readonly=True,
@@ -27,22 +27,22 @@ class project_issue_uasb(models.Model):
 
     @api.multi
     def signal_pendiente(self):
-        self.write({'state': 'Pendiente'})
+        self.write({'state': '2.Pendiente'})
         return True
 
     @api.multi
     def signal_escalar(self):
-        self.write({'state': 'Escalado'})
+        self.write({'state': '3.Escalado'})
         return True
 
     @api.multi
     def signal_resuelto(self):
-        self.write({'state': 'Resuelto'})
+        self.write({'state': '4.Resuelto'})
         return True
 
     @api.multi
     def signal_cerrado(self):
-        self.write({'state': 'Cerrado'})
+        self.write({'state': '5.Cerrado'})
         return True
 
 class SuperCategoria(models.Model):
