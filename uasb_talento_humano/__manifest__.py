@@ -6,7 +6,7 @@
         Módulo para Talento Humano UASB""",
 
     'description': """
-        Telento Humano
+        Talento Humano
     """,
 
     'author': "Carlos Diaz",
