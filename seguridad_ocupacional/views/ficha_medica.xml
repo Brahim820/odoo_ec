@@ -472,9 +472,7 @@
             </field>
         </record>
 
-
-
-      <record model="ir.ui.view" id="diagnostico_form_view">
+        <record model="ir.ui.view" id="diagnostico_form_view">
             <field name="name">resultado_complementario.form</field>
             <field name="model">seguridad.diagnostico</field>
             <field name="arch" type="xml">

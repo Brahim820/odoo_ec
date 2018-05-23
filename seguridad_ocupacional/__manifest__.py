@@ -24,17 +24,13 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/ficha_medica.xml',
         'views/hoja_evolucion.xml',
         'views/report_ficha.xml',
         'views/report_certificado.xml',
         'views/report_hoja_evolucion.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-       # 'demo/demo.xml',
+
     ],
 }
