@@ -29,6 +29,7 @@
         'views/project_issue_workflow.xml',
         'views/website_project_detail_ticket.xml',
         'views/website_project_create_ticket.xml',
+        'views/website_project_create_ticket_out.xml',
         'views/project_user.xml',
 
     ],

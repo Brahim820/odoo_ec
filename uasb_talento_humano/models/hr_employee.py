@@ -12,6 +12,7 @@ class HrEmployee(models.Model):
     discapacidad = fields.Boolean(string="Tienes algún tipo de discapacidad",  required=True, )
     porcentaje_discapacidad = fields.Integer(string="Porcentaje de discapacidad :",  )
     carnet_discapacidad = fields.Char(string="Carnet de discapacidad:", )
+    fecha_ingreso = fields.Date(string="Fecha de Ingreso:", )
 
 class Formacion(models.Model):
     _name = 'hr.employee.formacion'

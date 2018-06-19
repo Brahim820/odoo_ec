@@ -29,7 +29,7 @@ class Ficha(models.Model):
     factor_ids = fields.One2many('seguridad.factor', 'ficha_id',string="Ingrese los factores de riesgo")
     sistema_id= fields.Many2many('seguridad.sistema', string="Órgano o Sistema")
     observacion = fields.Text(string="Observaciones")
-    presion = fields.Integer(string="Presión Arterial")
+    presion = fields.Text(string="Presión Arterial")
     frecuencia = fields.Integer(string="Frecuencia Cardíaca")
     peso = fields.Float(digits=(6, 2), string="Peso (Kg)")
     estatura = fields.Float(digits=(6, 2), string="Estatura(mts)")

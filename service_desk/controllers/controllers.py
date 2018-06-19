@@ -191,6 +191,99 @@ class Example(http.Controller):
 
         return werkzeug.utils.redirect("/create_issue/ticket/thanks")
 
+    @http.route('/create_issue/ticket/submit_out', type="http", auth="public", website=True)
+    def support_submit_ticket_out(self, **kw):
+        """Let's public and registered user submit a support ticket"""
+        person_name = ""
+        if http.request.env.user.name != "Public user":
+            person_name = http.request.env.user.name
+
+        setting_max_ticket_attachments = request.env['ir.values'].get_default('website.support.settings',
+                                                                              'max_ticket_attachments')
+
+        if setting_max_ticket_attachments == 0:
+            # Back compatablity
+            setting_max_ticket_attachments = 2
+
+        setting_max_ticket_attachment_filesize = request.env['ir.values'].get_default('website.support.settings',
+                                                                                      'max_ticket_attachment_filesize')
+
+        if setting_max_ticket_attachment_filesize == 0:
+            # Back compatablity
+            setting_max_ticket_attachment_filesize = 500
+
+        return http.request.render('service_desk.website_project_create_ticket_out', {
+            'person_name': person_name,
+            'email': http.request.env.user.email,
+            'setting_max_ticket_attachments': setting_max_ticket_attachments,
+            'setting_max_ticket_attachment_filesize': setting_max_ticket_attachment_filesize})
+
+    @http.route('/create_issue/ticket/process_out', type="http", auth="public", website=True, csrf=True)
+    def support_process_ticket_out(self, **kwargs):
+        """Adds the support ticket to the database and sends out emails to everyone following the support ticket category"""
+        values = {}
+        for field_name, field_value in kwargs.items():
+            values[field_name] = field_value
+
+        if values['my_gold'] != "256":
+            return "Bot Detected"
+
+        my_attachment = ""
+        file_name = ""
+
+        if http.request.env.user.name != "Public user":
+            portal_access_key = randint(1000000000, 2000000000)
+            new_ticket_id = request.env['project.issue'].sudo().create(
+                {'supercategoria': 4,
+                 'tipo': 2,
+                 'email_from': values['email'],
+                 'description': values['description'],
+                 'name': values['subject'],
+                 'partner_id': http.request.env.user.partner_id.id,
+                 'project_id': 2,
+                 'user_id': 121,
+                 'type': 3,
+                 'state': "2.Pendiente",
+                 'categoria': 2,
+                 'subcategoria': 25,
+                 'area': 19,
+                 'color': 2,
+
+
+                 })
+
+            # if http.request.env.user.name != "Public user":
+            #     portal_access_key = randint(1000000000, 2000000000)
+            #     new_ticket_id = request.env['project.issue'].sudo().create(
+            #          {'person_name': values['person_name'], 'categoria': values['category'],
+            #           'email_from': values['email'], 'description': values['description'], 'name': values['subject'],
+            #           'partner_id': http.request.env.user.partner_id.id, 'attachment': my_attachment,
+            #           'attachment_filename': file_name, 'portal_access_key': portal_access_key})
+
+            partner = http.request.env.user.partner_id
+
+            # Add to the communication history
+            partner.message_post(body="Customer " + partner.name + " has sent in a new support ticket",
+                                 subject="New Support Ticket")
+
+
+
+        if 'file' in values:
+
+            for c_file in request.httprequest.files.getlist('file'):
+                data = c_file.read()
+
+                if c_file.filename:
+                    request.env['ir.attachment'].sudo().create({
+                        'name': c_file.filename,
+                        'datas': data.encode('base64'),
+                        'datas_fname': c_file.filename,
+                        'res_model': 'project.issue',
+                        'res_id': new_ticket_id.id
+                    })
+
+        return werkzeug.utils.redirect("/create_issue/ticket/thanks")
+
     @http.route('/create_issue/ticket/thanks', type="http", auth="public", website=True)
     def support_ticket_thanks(self, **kw):
         """Displays a thank you page after the user submits a ticket"""
