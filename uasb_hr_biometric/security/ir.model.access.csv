@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_uasb_hr_biometric_uasb_hr_biometric,uasb_hr_biometric.uasb_hr_biometric,model_uasb_hr_biometric_uasb_hr_biometric,,1,0,0,0
