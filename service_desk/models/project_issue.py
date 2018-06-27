@@ -43,6 +43,7 @@ class project_issue_uasb(models.Model):
     @api.multi
     def signal_cerrado(self):
         self.write({'state': '5.Cerrado'})
+        self.write({'stage_id': 16})
         return True
 
 class SuperCategoria(models.Model):
