@@ -6,12 +6,23 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
+
+
                 <notebook position="inside">
                     <page string="Discapacidad">
                         <group>
-                            <field name="discapacidad"/>
-                            <field name="porcentaje_discapacidad"/>
-                            <field name="carnet_discapacidad"/>
+                             <group string="Sustituto">
+                                <field name="sustituto"/>
+                                <field name="parentesco"/>
+                                <field name="cedula_familiar"/>
+                            </group>
+                            <group string="Discapacidad">
+                                <field name="discapacidad"/>
+                                <field name="porcentaje_discapacidad"/>
+                                <field name="carnet_discapacidad"/>
+                                <field name="ad_carnet_ids" widget="many2many_binary"/>
+                            </group>
+
                         </group>
                     </page>
                     <page string="Formación">
@@ -21,7 +32,9 @@
                                         <field name="nivel"/>
                                         <field name="institucion"/>
                                         <field name="titulo"/>
+                                        <field name="registrado"/>
                                         <field name="registro"/>
+                                        <field name="attachment_ids" widget="many2many_binary"/>
                                     </tree>
                             </field>
                         </group>
@@ -39,6 +52,7 @@
                                         <field name="fecha_hasta"/>
                                         <field name="dias"/>
                                         <field name="horas"/>
+                                        <field name="ad_capacitacion_ids" widget="many2many_binary"/>
                                     </tree>
                             </field>
                         </group>
@@ -53,7 +67,9 @@
                                         <field name="fecha_desde"/>
                                         <field name="fecha_hasta"/>
                                         <field name="actividad_ids" widget="many2many_tags">
+
                                         </field>
+                                        <field name="ad_experiencia_ids" widget="many2many_binary"/>
                                     </tree>
                             </field>
                         </group>
@@ -64,12 +80,34 @@
                                     <tree editable="bottom">
                                         <field name="name"/>
                                         <field name="tipologro"/>
+                                        <field name="ad_logro_ids" widget="many2many_binary"/>
                                     </tree>
                             </field>
                         </group>
                     </page>
                 </notebook>
+                <xpath expr="//field[@name='marital']" position="before">
+                    <field name="etnia_ids"/>
+                </xpath>
+
+                <xpath expr="//field[@name='bank_account_id']" position="after">
+                    <field name="ad_cedula_ids" widget="many2many_binary"/>
+                    <field name="ad_papeleta_ids" widget="many2many_binary"/>
+                    <field name="ad_cuenta_ids" widget="many2many_binary"/>
+                </xpath>
+
+
+                <xpath expr="//group[@name='active_group']" position="after">
+                    <group string='Relación' name="active_group">
+                        <field name="fecha_ingreso"/>
+                        <field name="escalafon"/>
+                        <field name="relacion"/>
+                        <field name="actividad_con_ids"/>
+                    </group>
+                </xpath>
             </field>
        </record>
+
+
   </data>
 </openerp>

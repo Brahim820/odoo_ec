@@ -97,35 +97,55 @@ class biometric_machine(models.Model):
             port = info.port
 
             # connect to the biometric device using the machine ip and port
-            zk = zklib.ZKLib(machine_ip, int(port))
+            zk = zklib.ZKLib(str(machine_ip), int(port))
             res = zk.connect()
-            print '1 res'+res
+            print '1 res'+str(res)
             if res:
                 zk.enableDevice()
+                print zk.enableDevice()
+                print zk.disableDevice()
+                print zk.version()
+                print zk.osversion()
+                print zk.deviceName()
+                print zk.getUser()
+
                 user = zk.getUser()
+                print '0 user ' + str(user)
                 attendance = zk.getAttendance()
+                print 'attendance ' + str(attendance)
                 if (attendance):
                     # get the user data from the biometric device
                     user = zk.getUser()
+                    print '0.1 user ' + str(user)
                     for lattendance in attendance:
                         time_att = str(lattendance[2].date()) + ' ' + str(lattendance[2].time())
+                        print '2 time_att ' + str(time_att)
                         atten_time = datetime.strptime(str(time_att), '%Y-%m-%d %H:%M:%S')
+                        print '3 atten_time ' + str(atten_time)
                         atten_time = datetime.strftime(atten_time, '%Y-%m-%d %I:%M:%S')
+                        print '4 atten_time ' + str(atten_time)
                         in_time = datetime.strptime(atten_time, '%Y-%m-%d %H:%M:%S').time()
+                        print '5 in_time ' + str(in_time)
                         time_new = str(in_time)
                         time_new = time_new.replace(":", ".", 1)
                         time_new = time_new[0:5]
                         check_in = fields.Datetime.to_string(fields.Datetime.context_timestamp(self, fields.Datetime.from_string(atten_time))),
+                        print '6 check_in ' + str(check_in)
                         if user:
                             for uid in user:
                                 # compare the employee code in user data with employee code in attendance data of each employee in the attendance list
                                 # only matched users are processed
+                                print '7 user[uid][0] ' + user[uid][0]
+                                print '8 lattendance[0] ' + str(lattendance)
+                                print '8 lattendance[0] ' + str(str(lattendance[0]))
                                 if user[uid][0] == str(lattendance[0]):
                                     get_user_id = self.env['hr.employee'].search([('emp_code', '=', str(lattendance[0]))])
+                                    print '8 get_user_id ' + str(get_user_id)
                                     if get_user_id:
 
                                         # check for duplicate attendance values
                                         duplicate_atten_ids = self.env['hr.attendance'].search([('emp_code', '=', str(lattendance[0])), ('check_in', '=', check_in)])
+
                                         if duplicate_atten_ids:
                                             continue
                                         else:
